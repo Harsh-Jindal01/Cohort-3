@@ -4,24 +4,34 @@ const app = express();
 
 app.use(express.json);
 
-app.post("signup", (req, res) => {
-
+app.post("/signup", (req, res) => {
+  res.json({
+    message: "signup endpoint"
+  })
 })
 
-app.post("login", (req, res) => {
-
+app.post("/login", (req, res) => {
+  res.json({
+    message: "login endpoint"
+  })
 })
 
-app.post("purchase-courses", (req, res) => {
-
+app.get("/user/purchases", (req, res) => {
+  res.json({
+    message: "purchased courses endpoint"
+  })
 })
 
-app.get("courses", (req, res) => {
-
+app.get("/courses", (req, res) => {
+  res.json({
+    message: "all courses endpoint"
+  })
 })
 
-app.get("purchased-courses", (req, res) => {
-
+app.get("/course/purchase", (req, res) => {
+  res.json({
+    message: " endpoint"
+  })
 })
 
 
