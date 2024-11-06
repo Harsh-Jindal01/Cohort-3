@@ -1,17 +1,46 @@
 const { Router } = require("express");
 const adminRouter = Router();
 const { adminModel } = require("../db");
+const jwt = require("jsonwebtoken");
+const JWT_ADMIN_PASSWORD = "noelle-easton-14"
+adminRouter.post("/signup", async (req, res) => {
+  const { email, password, firstName, lastName } = req.body;
 
-
-adminRouter.post("/signup", (req, res) => {
+  await adminModel.create({
+    email,
+    password,
+    firstName,
+    lastName
+  })
   res.json({
-    message: "signup endpoint"
+    message: "signup succeded"
   })
 })
 
-adminRouter.post("/login", (req, res) => {
+adminRouter.post("/login", async (req, res) => {
+  const { email, password } = req.body;
+  const admin = await adminModel.findOne({
+    email,
+    password
+  })
+
+  if(admin){
+    const token = jwt.sign({
+      id: admin._id
+    }, JWT_ADMIN_PASSWORD);
+    
+    // Do cookies logic
+
+    res.json({
+      token
+    })
+  }else{
+    res.status(403).json({
+      message: "Invalid Credentials"
+    })
+  }
   res.json({
-    message: "login endpoint"
+    message: "login succeded"
   })
 })
 

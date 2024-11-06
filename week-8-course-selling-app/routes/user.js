@@ -47,7 +47,7 @@ userRouter.post("/login", async (req, res) => {
     })
   }
   res.json({
-    message: "login endpoint"
+    message: "login succeded"
   })
 })
 
