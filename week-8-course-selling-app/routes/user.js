@@ -4,7 +4,8 @@ const { Router } = require("express");
 const userRouter = Router();
 
 const jwt = require("jsonwebtoken");
-const JWT_USER_PASSWORD = 'sophie_dee69';
+const {JWT_USER_PASSWORD} = require("../config")
+
 
 // importing db connections from db.js file.
 
