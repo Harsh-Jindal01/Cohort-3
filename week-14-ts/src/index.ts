@@ -31,7 +31,7 @@ function delayCall(fn:() => void) {
 }
 
 let fn = delayCall(function () {
-  console.log("hello");  
+  // console.log("hello");  
 })
 
 // console.log(fn);
@@ -49,4 +49,50 @@ const eUser: user = {
   age : 32,
 }
 
-console.log(eUser.name);
+// console.log(eUser.name);
+
+
+// make a interface type or variable optional
+
+interface User {
+  name: string,
+  age: number,
+  address?: {       // ? make the optional parameter
+    city: string,
+    state: string,
+    pincode: number,
+  };
+}
+
+
+// function which take users array as input and return the user which are 18+
+
+interface admin{
+  firstName: string;
+  lastName: string;
+  age: number;
+}
+
+function validUsers(users: admin[]) {
+  let val = [];
+  for (let i = 0; i < users.length; i++) {
+    
+    if (users[i].age >= 18) {
+      val.push(users[i])
+    }    
+  }
+
+  return val;
+
+  return users.filter((user) => user.age >= 18);
+}
+
+const filterUser = validUsers([
+  {
+    firstName: "harsh",
+    lastName: "jindal",
+    age: 21,
+  }
+])
+
+// console.log(filterUser);
