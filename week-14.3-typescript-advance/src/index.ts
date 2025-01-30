@@ -44,3 +44,19 @@ const user : Readonly<Person> = {
 // This line will show error.
 
 // user.age = 25; 
+
+//===========================================================================
+
+//Record
+
+type Man = Record<string, number>
+
+const users: Man = {
+  "har@sh" : 21,
+  "jaz@dhami" : 37
+
+}
+
+//===========================================================================
+
+// Map
